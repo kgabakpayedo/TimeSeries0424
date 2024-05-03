@@ -8,11 +8,24 @@ library(tidyverse) # Make data tidying easier
 
 # Loading the series in a data frame
 
-csvseries <- read_delim("data/series.csv", ";", col_names = c("Period", "IndexValue"), col_select = (1:2), skip = 4) 
+series <- read_delim("data/series.csv", ";", col_names = c("Period", "IndexValue"), col_select = (1:2), skip = 4) 
 
-head(csvseries, n = 5) 
+head(series, n = 5) 
 
 
 # Formatting the table
 
-csvseries <- mutate(csvseries, Period = as.yearmon(Period))
+series <- mutate(series, Period = as.yearmon(Period))
+
+glimpse(series)
+
+# Creating a time series object from the original series 
+
+tseries <- ts(series$IndexValue, frequency = 12, start = c(1998,1))
+
+dygraph(tseries)
+
+
+
+
+
