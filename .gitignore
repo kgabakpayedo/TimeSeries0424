@@ -36,4 +36,5 @@ rsconnect/
 #documents produced from quarto or markdown
 *.pdf
 *.html
-#data files 
+#data files
+*.csv
