@@ -21,7 +21,11 @@ glimpse(series)
 
 # Creating a time series object from the original series 
 
-tseries <- xts(series$IndexValues, order.by = series$IndexValues)
+tseries <- ts(series$IndexValue, frequency = 12, start = c(1998,1))
 
 dygraph(tseries)
+
+
+
+
 
