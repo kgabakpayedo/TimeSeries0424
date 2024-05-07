@@ -26,3 +26,9 @@ autoplot(good$residuals)
 
 Box.test(good$residuals)
 
+
+
+#Testing the statistical significance of the fitted coefficients 
+
+
+(1-pnorm(abs(good$coef)/sqrt(diag(good$var.coef))))*2
