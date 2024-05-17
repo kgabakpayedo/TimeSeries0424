@@ -5,7 +5,7 @@ library(zoo)
 library(lubridate)
 library(dygraphs) # Make interactive plot of the time series 
 library(tidyverse) # Make data tidying easier
-
+library(ggfortify)
 # Loading the series in a data frame
 
 series <- read_delim("data/series.csv", ";", col_names = c("Period", "IndexValue"), col_select = (1:2), skip = 4) 
@@ -26,6 +26,8 @@ tseries <- ts(series$IndexValue, frequency = 12, start = c(1998,1))
 dygraph(tseries)
 
 
+ggplot(series, aes(Period, IndexValue))+
+  geom_line()
 
 
 
